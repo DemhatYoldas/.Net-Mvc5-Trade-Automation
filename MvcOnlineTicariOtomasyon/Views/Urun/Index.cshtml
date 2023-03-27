@@ -16,6 +16,8 @@
         <th> Durum </th>
         <th> Kategori </th>
         <th> Ürün Görsel </th>
+        <th>Sil</th>
+        <th>Güncelle</th>
     </tr>
     @foreach (var k in Model)
     {
@@ -27,10 +29,10 @@
             <td>@k.AlisFiyati</td>
             <td>@k.SatisFiyati</td>
             <td>@k.Durum</td>
-            <td>@k.kategori</td>
+            <td>@k.kategori.KategoriAd</td>
             <td>@k.UrunGorsel</td>
-            <td><a href="/Urun/UrunSil/@k.UrunID" class="btn btn-danger">Sil</a></td>
-            <td><a href="/Urun/UrunGetir/@k.UrunID" class="btn btn-warning">Güncelle</a></td>
+            <td><a href="/Urun/UrunSil/@k.UrunID" class="btn btn-danger">Sil</a></td> 
+            <td><a href="/Urun/UrunGetir/@k.UrunID" class="btn btn-warning">Güncelle</a></td> 
         </tr>
     }
     <tr>
