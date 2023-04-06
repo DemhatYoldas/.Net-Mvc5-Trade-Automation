@@ -57,9 +57,14 @@ namespace MvcOnlineTicariOtomasyon.Controllers
             var deger14 = c.SatisHarekets.Sum(x => x.ToplamTutar).ToString();
             ViewBag.d14 = deger14;
 
-            var deger13 = c.Carilers.Count().ToString();
+            // iç sorgu en çok olan ürün id veriyor dış sorguda onunla eşitlenip adını yazdırıyor 
+            var deger13 = c.Uruns.Where(u => u.UrunID == (c.SatisHarekets.GroupBy(x => x.Urunid).OrderByDescending(z => z.Count()).Select(y => y.Key).FirstOrDefault())).Select(k => k.UrunAd).FirstOrDefault();
             ViewBag.d13 = deger13;
 
+            //var deger13 = c.SatisHarekets.GroupBy(x => x.Urunid).OrderByDescending(z => z.Count()).Select(y => y.Key).FirstOrDefault();
+            //ViewBag.d13 = deger13;
+
+            // OrderByDescending sıraladında marka değeri en yüksek ilk başta olucak marka değerini seçip getirecek
             var deger12 = c.Uruns.GroupBy(x => x.Marka).OrderByDescending(z => z.Count()).Select(y=>y.Key).FirstOrDefault();
             ViewBag.d12 = deger12;
 
