@@ -1,0 +1,18 @@
+﻿@model IEnumerable<MvcOnlineTicariOtomasyon.Models.Siniflar.SinifGrup2>
+
+
+Merhaba Dünya
+
+<table>
+    <tr>
+        <td >Departman</td>
+        <td >Adet</td>
+    </tr>
+    @foreach (var x in Model)
+    {
+        <tr>
+            <th>@x.Deparman</th>
+            <th>@x.Sayi</th>
+        </tr>
+    }
+</table>
