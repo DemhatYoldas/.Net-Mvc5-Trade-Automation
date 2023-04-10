@@ -100,7 +100,7 @@ namespace MvcOnlineTicariOtomasyon.Controllers
         public PartialViewResult Partial1()
         {
             var sorgu2 = from x in c.Personels
-                         group x by x.Departmanid into g
+                         group x by x.Departman.DepartmanAd into g
                          select new SinifGrup2
                          {
                              Deparman = g.Key,
@@ -109,6 +109,28 @@ namespace MvcOnlineTicariOtomasyon.Controllers
             return PartialView(sorgu2.ToList());
         }
 
+        public PartialViewResult Partial2()
+        {
+            var sorgu3=c.Carilers.ToList();
+            return PartialView(sorgu3);
+        }
 
+        public PartialViewResult Partial3()
+        {
+            var sorgu4=c.Uruns.ToList();
+            return PartialView(sorgu4);
+        }
+
+        public PartialViewResult partial4()
+        {
+            var sorgu4 = from x in c.Uruns
+                         group x by x.Marka into g
+                         select new SinifGrup3
+                         {
+                             marka = g.Key,
+                             sayi = g.Count()
+                         };
+            return PartialView(sorgu4.ToList());
+        }
     }
 }
