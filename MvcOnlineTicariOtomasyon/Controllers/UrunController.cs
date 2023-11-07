@@ -15,10 +15,17 @@ namespace MvcOnlineTicariOtomasyon.Controllers
     {
         // GET: Urun
         Context c = new Context();
-        public ActionResult Index()
+        public ActionResult Index(string p)
         {
-            var urunler = c.Uruns.Where(x=>x.Durum==true).ToList();
-            return View(urunler);
+            //önce ürünleri seç
+            var urunler = from x in c.Uruns select x;
+           // sonra eğerki p boşta ise 
+            if (!string.IsNullOrEmpty(p))
+            {
+                //texbox'ın içersindeki değere göre bana p getir 
+                urunler = urunler.Where(y => y.UrunAd.Contains(p));
+            }
+            return View(urunler.ToList());
         }
 
         [HttpGet]

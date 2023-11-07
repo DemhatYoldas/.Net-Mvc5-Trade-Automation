@@ -14,9 +14,8 @@
 
 <table class="table table-hover">
     <tr>
-        <th>Personel ID</th>
-        <th> Ad </th>
-        <th> Soyad  </th>
+        @*<th>Personel ID</th>*@
+        <th> Personel </th>
         <th> Görsel </th>
         <th> Satışlar </th>
     </tr>
@@ -24,12 +23,11 @@
     {
 
         <tr>
-            <td>@d.PersonelID</td>
-            <td>@d.PersonelAd</td>
-            <td>@d.PersonelSoyad</td>
-            <td>@d.PersonelGorsel</td>
+            @*<td>@d.PersonelID</td>*@
+            <td>@d.PersonelAd @d.PersonelSoyad</td>
+            <td><img src="@d.PersonelGorsel" class="img-circle img-fluid" width="80px" height="80px" /></td>
             <td><a href="/Departman/DepartmanPersonelSatis/@d.PersonelID" class="btn btn-outline-secondary">Satışlar</a></td>
-
+            
         </tr>
 
     }

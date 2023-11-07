@@ -1,5 +1,7 @@
 ﻿@using MvcOnlineTicariOtomasyon.Models.Siniflar
-@model List<Kategori>
+@using PagedList
+@using PagedList.Mvc
+@model PagedList.IPagedList<Kategori>
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/AdminLayout.cshtml";
@@ -7,7 +9,7 @@
 
 <table class="table table-bordered" style="margin-top:20px;">
     <tr>
-        <th>ID</th>
+        @*<th>ID</th>*@
         <th> Kategori Adı </th>
         <th> Sil  </th>
         <th> Güncelle </th>
@@ -15,7 +17,7 @@
     @foreach (var k in Model)
     {
         <tr>
-            <td>@k.KtegoriID</td>
+            @*<td>@k.KtegoriID</td>*@
             <td>@k.KategoriAd</td>
             <td><a href="/Kategori/KategoriSil/@k.KtegoriID" class="btn btn-danger">Sil</a></td>
             <td><a href="/Kategori/KategoriGetir/@k.KtegoriID" class="btn btn-warning">Güncelle</a></td>
@@ -26,4 +28,6 @@
     </tr>
 
 </table>
+ @*sayfada sadece e kategori gösterdikya bu yazdımız da diğer kısımları göstreiyor anla işte*@ 
+@Html.PagedListPager((IPagedList)Model, sayfa => Url.Action("Index", new {sayfa}))
 <a href="~/Kategori/KategoriEkle" class="btn btn-primary">Kategori Ekle</a>
