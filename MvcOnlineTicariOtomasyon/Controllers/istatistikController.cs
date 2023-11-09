@@ -73,9 +73,9 @@ namespace MvcOnlineTicariOtomasyon.Controllers
             ViewBag.d15 = deger15;
 
 
-            //var deger16 = c.SatisHarekets.Where(x => x.Tarih == bugun).Sum(y => y.ToplamTutar).ToString();
-            //ViewBag.d16 = deger16;
-
+            var deger16 = c.SatisHarekets.Where(x => x.Tarih == bugun).Sum(y => (decimal?)y.ToplamTutar).ToString();
+            ViewBag.d16 = deger16;
+            // buraya decimal ekleme sebebi null olsa bile hata fırlatma null olabilir 
             return View();
         }
 
